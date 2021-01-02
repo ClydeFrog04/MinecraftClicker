@@ -21,8 +21,8 @@ public class Main extends Application {
 
         //set textfield to be numeric only
         controller.setDelayField.textProperty().addListener((observable, oldValue, newValue) -> {
-            if(!newValue.matches("\\d*")) {
-                controller.setDelayField.setText(newValue.replaceAll("[^\\d]", ""));
+            if(!newValue.matches("\\d*.")) {
+                controller.setDelayField.setText(newValue.replaceAll("[^\\d.]", ""));
             }
         });
 

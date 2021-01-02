@@ -17,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.concurrent.CountDownLatch;
@@ -34,53 +35,30 @@ public class Controller implements Initializable {
 
     //application state vars
     private boolean isClicking = false;
-    private int textDelay = 2;//default to 2 seconds
     private ClickService clickService;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        clickService = new ClickService();
+        try {
+            clickService = new ClickService(setDelayField);
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
         Platform.runLater(() -> {
             clickService.start();
+            clickService.pause();
         });
     }
 
-    //click service
-    Service<Void> service = new Service<Void>() {
-        @Override
-        protected Task<Void> createTask() {
-            return new Task<Void>() {
-                @Override
-                protected Void call() throws Exception {
-                    //Background work
-                    final CountDownLatch latch = new CountDownLatch(1);
-                    Platform.runLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            try{
-                                //fx stuff here
-                                System.out.println("service running");
-                                for (int i = 0; i < 1000000; i++) {
-                                    System.out.println(i);
-                                }
-                            }finally {
-                                latch.countDown();
-                            }
-                        }
-                    });
-                    latch.await();
-                    //keep with the background work
-                    return null;
-                }
-            };
-        }
-    };
-
-
     public void buttonClicked(){
-//        if(service.getState().equals(Worker.State.RUNNING)) service.cancel();
-        if(isClicking) clickService.pause();
-        else clickService.resume();
+        if(isClicking) {
+            clickService.pause();
+            clickStatus.setText("Not Clicking");
+        }
+        else {
+            clickService.resume();
+            clickStatus.setText("Clicking");
+        }
         isClicking = !isClicking;
         System.out.println(isClicking + " " + setDelayField.getText());
     }
