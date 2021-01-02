@@ -16,4 +16,14 @@ public class Controller {
     @FXML
     Label clickStatus;
 
+    //application state vars
+    private boolean isClicking = false;
+    private int textDelay = 2;//default to 2 seconds
+
+    public void buttonClicked(){
+        isClicking = !isClicking;
+        System.out.println(isClicking + " " + setDelayField.getText());
+    }
+
+
 }

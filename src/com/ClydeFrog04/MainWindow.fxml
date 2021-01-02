@@ -13,7 +13,7 @@
          <children>
             <TextField fx:id="setDelayField" layoutX="26.0" layoutY="88.0" />
             <Label fx:id="delayLabel" layoutX="71.0" layoutY="57.0" text="Click Delay" />
-            <Button fx:id="toggleButton" layoutX="60.0" layoutY="124.0" mnemonicParsing="false" text="Toggle Click" />
+            <Button fx:id="toggleButton" layoutX="60.0" layoutY="124.0" mnemonicParsing="false" onAction="#buttonClicked" text="Toggle Click" />
             <Label fx:id="clickStatus" layoutX="79.0" layoutY="163.0" text="Clicking" />
          </children>
       </AnchorPane>
