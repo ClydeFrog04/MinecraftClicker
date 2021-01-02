@@ -24,7 +24,6 @@ public class Main extends Application {
             if(!newValue.matches("\\d*")) {
                 controller.setDelayField.setText(newValue.replaceAll("[^\\d]", ""));
             }
-
         });
 
         primaryStage.setTitle("OP Farms");
