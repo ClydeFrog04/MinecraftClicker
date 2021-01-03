@@ -1,8 +1,21 @@
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<GridPane fx:controller="com.ClydeFrog04.Controller"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="com.ClydeFrog04.Controller">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <TextField fx:id="setDelayField" layoutX="26.0" layoutY="88.0" />
+            <Label fx:id="delayLabel" layoutX="71.0" layoutY="57.0" text="Click Delay" />
+            <Button fx:id="toggleButton" layoutX="60.0" layoutY="124.0" mnemonicParsing="false" onAction="#buttonClicked" text="Toggle Click" />
+            <Label fx:id="clickStatus" layoutX="79.0" layoutY="163.0" text="Not Clicking" />
+         </children>
+      </AnchorPane>
+   </children>
 </GridPane>
