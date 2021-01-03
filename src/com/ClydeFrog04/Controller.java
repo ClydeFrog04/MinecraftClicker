@@ -16,6 +16,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.layout.AnchorPane;
 
 import java.awt.*;
 import java.net.URL;
@@ -32,15 +34,24 @@ public class Controller implements Initializable {
     Button toggleButton;
     @FXML
     Label clickStatus;
+    @FXML
+    AnchorPane mainAnchorPane;
 
     //application state vars
     private boolean isClicking = false;
+    private boolean isCrafting = false;
     private ClickService clickService;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
             clickService = new ClickService(setDelayField);
+            setDelayField.setOnKeyPressed(e ->{
+                if(e.getCode() == KeyCode.F12){
+                    handlef12();
+                }
+            });
+            mainAnchorPane.requestFocus();
         } catch (AWTException e) {
             e.printStackTrace();
         }
@@ -48,6 +59,22 @@ public class Controller implements Initializable {
             clickService.start();
             clickService.pause();
         });
+    }
+
+    public void handlef12(){
+        //f12 will be used for initializing and ending auto crafting
+        System.out.println("F12 pressed");
+        if(isCrafting){
+            //pause crafting service
+            //set status
+
+        }else{
+            if(isClicking){//check if the auto clicker is running, if it is, then stop clicking before crafting
+                clickService.pause();
+                isClicking = false;
+            }
+        }
+
     }
 
     public void buttonClicked(){
