@@ -31,40 +31,18 @@ public class Main extends Application {
 
         primaryStage.setTitle("OP Farms");
         Scene mainScene = new Scene(root, 500, 500);
-//        mainScene.setOnKeyPressed(e -> {
-//            System.out.println("Key pressed");
-//            if(e.getCode() == KeyCode.F12){
-//                handlef12();
-//            }
-//        });
+        mainScene.setOnKeyPressed(e -> {
+            if(e.getCode() == KeyCode.ESCAPE){
+                System.out.println("escape pressed");
+                controller.shiftService.pause();
+                controller.holdShiftCheckBox.setSelected(false);
+            }
+        });
         primaryStage.setScene(mainScene);
 
-        /*
 
-
-        scene.setOnKeyPressed(e -> {
-    if (e.getCode() == KeyCode.A) {
-        System.out.println("A key was pressed");
-    }
-});
-         */
         primaryStage.show();
     }
-
-//    public void handlef12(){
-//        //f12 will be used for initializing and ending auto crafting
-//        System.out.println("F12 pressed");
-//        if(controller.isCrafting){
-//            //pause crafting service
-//            //set status
-//
-//        }else{
-//            if(controller.isClicking){//check if the auto clicker is running, if it is, then stop clicking before crafting
-//                controller.clickService.pause();
-//                controller.isClicking = false;
-//            }
-//        }
-//    }
 
 
     public static void main(String[] args) {

@@ -25,7 +25,7 @@ public class ClickService extends ScheduledService<Void>{
         return new Task<Void>() {
             @Override
             protected Void call() throws Exception {
-                delay = delayTextField.getText().length() > 0 ? (int)(Double.parseDouble(delayTextField.getText()) * 1000) : 2000;
+                delay = (delayTextField.getText().length() > 0) ? (int) (Double.parseDouble(delayTextField.getText()) * 1000) : 2000;
                 while(delay > 0){
                     System.out.println("Click at " + new Date(System.currentTimeMillis()));
                     Thread.sleep(delay);
