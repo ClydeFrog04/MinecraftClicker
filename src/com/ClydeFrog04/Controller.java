@@ -42,10 +42,13 @@ public class Controller implements Initializable {
     AnchorPane mainAnchorPane;
     @FXML
     CheckBox holdShiftCheckBox;
+    @FXML
+    CheckBox rightClickCheckBox;
 
     //application state vars
     private boolean isClicking = false;
     private boolean isCrafting = false;
+    private boolean shouldRightClick = false;
     private ClickService clickService;
     ShiftService shiftService;
 
@@ -80,6 +83,13 @@ public class Controller implements Initializable {
         System.out.println(e);
         if(holdShiftCheckBox.isSelected()) shiftService.resume();
         else shiftService.pause();
+    }
+
+    public void rightClickStateChange(Event e){
+        System.out.println(e);
+        shouldRightClick = rightClickCheckBox.isSelected();
+        clickService.setShouldRightClick(shouldRightClick);
+        System.out.println(shouldRightClick);
     }
 
 

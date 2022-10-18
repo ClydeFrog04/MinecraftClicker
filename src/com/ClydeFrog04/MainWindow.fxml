@@ -18,6 +18,7 @@
             <Button fx:id="toggleButton" layoutX="60.0" layoutY="124.0" mnemonicParsing="false" onAction="#leftClickButtonClicked" text="Toggle Click" />
             <Label fx:id="clickStatus" layoutX="79.0" layoutY="163.0" text="Not Clicking" />
             <CheckBox fx:id="holdShiftCheckBox" layoutX="75.0" layoutY="211.0" mnemonicParsing="false" onAction="#shiftStateChange" prefHeight="17.0" prefWidth="109.0" text="Hold Shift" AnchorPane.leftAnchor="75.0" />
+            <CheckBox fx:id="rightClickCheckBox" layoutX="75.0" layoutY="241.0" mnemonicParsing="false" onAction="#rightClickStateChange" prefHeight="17.0" prefWidth="109.0" text="Right Click" />
          </children>
       </AnchorPane>
    </children>
